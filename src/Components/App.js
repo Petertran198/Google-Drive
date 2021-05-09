@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import SignUp from '../Auth/SignUp';
+import SignUp from '../auth/SignUp';
 
 export default function App() {
     return (
