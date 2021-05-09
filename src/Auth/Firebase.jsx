@@ -1,3 +1,4 @@
+//Remember to npm install firebase
 import firebase from 'firebase/app';
 //Also pull in these two services for db and auth services
 import 'firebase/auth';
@@ -12,4 +13,5 @@ var firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+
 export const auth = firebase.auth();
