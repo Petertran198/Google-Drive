@@ -3,15 +3,15 @@ import React, { useRef, useState } from 'react';
 //While useState will triger a rerender
 import { Card, Form, Button } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
-export default function SignUp() {
+export default function SignUp(props) {
     const [errors, setErrors] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
-
+    console.log(props.bob);
     // pull the signUp function from useAuth context to use
-    const { signUp, currentUser } = useAuth();
+    const { signUp } = useAuth();
     const handleSignUp = async (e) => {
         e.preventDefault();
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
