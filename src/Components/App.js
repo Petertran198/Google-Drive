@@ -4,7 +4,8 @@ import { Container } from 'react-bootstrap';
 import { Route, Switch } from 'react-router-dom';
 import PublicRoute from '../route/PublicRoute';
 import SignUp from '../auth/SignUp';
-
+import Dashboard from './Dashboard';
+import Login from '../auth/Login';
 export default function App() {
     return (
         <Container
@@ -13,12 +14,9 @@ export default function App() {
         >
             <div className='w-100' style={{ maxWidth: '400px' }}>
                 <Switch>
-                    <PublicRoute
-                        exact
-                        restricted={true}
-                        path='/signup'
-                        component={SignUp}
-                    />
+                    <PublicRoute exact path='/signup' component={SignUp} />
+                    <PublicRoute exact path='/login' component={Login} />
+                    <PublicRoute exact path='/' component={Dashboard} />
                 </Switch>
             </div>
         </Container>

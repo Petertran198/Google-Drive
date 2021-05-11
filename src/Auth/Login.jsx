@@ -1,40 +1,20 @@
 import React, { useRef, useState } from 'react';
-//Ref has the ability to perserve data such as useState, but it does not trigger rerender
-//While useState will triger a rerender
-import { Card, Form, Button } from 'react-bootstrap';
-import { useAuth } from '../contexts/AuthContext';
-export default function SignUp(props) {
-    const [errors, setErrors] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+import { Form, Card, Button } from 'react-bootstrap';
+
+export default function Login() {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
-    // pull the signUp function from useAuth context to use
-    const { signUp, currentUser } = useAuth();
-    const handleSignUp = async (e) => {
+    const [isLoading, setIsLoading] = useState(false);
+    const handleLogin = (e) => {
         e.preventDefault();
-        if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-            return setErrors('Password & PasswordConfirm do not match ');
-        }
-
-        try {
-            setErrors('');
-            setIsLoading(true);
-            await signUp(emailRef.current.value, passwordRef.current.value);
-        } catch (e) {
-            setErrors('Can not sign up');
-        }
-
-        //loadding becomes false after it is done waiting for the signUp to work or not to be able to click signUp button
-        setIsLoading(false);
+        setIsLoading(true);
     };
-
     return (
         <>
-            {errors && <div className='alert alert-danger'>{errors}</div>}
             <Card>
                 <Card.Body>
-                    <h2 className='text-center mb-4'>Sign Up Now</h2>
+                    <h2 className='text-center mb-4'>Login</h2>
                     <Form>
                         <Form.Group id='email'>
                             <Form.Label>Email</Form.Label>
@@ -59,17 +39,14 @@ export default function SignUp(props) {
                         <Button
                             variant='primary'
                             block
-                            onClick={handleSignUp}
+                            onClick={handleLogin}
                             disable={isLoading.toString()}
                         >
-                            Sign Up
+                            Login
                         </Button>
                     </Form>
                 </Card.Body>
             </Card>
-            <div className='w-100 text-center mt-2'>
-                Already have an account? Log In
-            </div>
         </>
     );
 }
