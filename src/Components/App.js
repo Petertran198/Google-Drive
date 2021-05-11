@@ -14,8 +14,18 @@ export default function App() {
         >
             <div className='w-100' style={{ maxWidth: '400px' }}>
                 <Switch>
-                    <PublicRoute exact path='/signup' component={SignUp} />
-                    <PublicRoute exact path='/login' component={Login} />
+                    <PublicRoute
+                        exact
+                        path='/signup'
+                        restricted={true}
+                        component={SignUp}
+                    />
+                    <PublicRoute
+                        exact
+                        path='/login'
+                        restricted={true}
+                        component={Login}
+                    />
                     <PublicRoute exact path='/' component={Dashboard} />
                 </Switch>
             </div>

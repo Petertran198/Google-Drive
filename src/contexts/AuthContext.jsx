@@ -26,10 +26,19 @@ export function AuthProvider({ children }) {
     }, []); // This will run atleast once when the components mounts even if there is a user or not. If no user currentUser is undefined
 
     const signUp = (email, password) => {
-        //return promise so got to async/await when used in different files
+        //return promise if successful will sign up, so you got to async/await when used in different files
         return auth.createUserWithEmailAndPassword(email, password);
     };
-    const value = { currentUser, signUp };
+
+    const login = (email, password) => {
+        //return promise if successful will login so you got to async/await when used in different files
+        return auth.signInWithEmailAndPassword(email, password);
+    };
+
+    const logOut = () => {
+        return auth.signOut();
+    };
+    const value = { currentUser, signUp, login, logOut };
 
     // This is the function that makes it possible for value to be available to anyone inside the <AuthProvider></AuthProvider> container
     // For example if I wrap around index.js. whatever data/function is provided in 'value' will be available throughout the app

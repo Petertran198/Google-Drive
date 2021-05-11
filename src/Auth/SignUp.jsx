@@ -10,7 +10,8 @@ export default function SignUp(props) {
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
     // pull the signUp function from useAuth context to use
-    const { signUp, currentUser } = useAuth();
+    const { signUp } = useAuth();
+
     const handleSignUp = async (e) => {
         e.preventDefault();
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -25,7 +26,7 @@ export default function SignUp(props) {
             setErrors('Can not sign up');
         }
 
-        //loadding becomes false after it is done waiting for the signUp to work or not to be able to click signUp button
+        //loading becomes false after it is done waiting for the signUp to work or not to be able to click signUp button
         setIsLoading(false);
     };
 
