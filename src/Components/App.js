@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 // remember npm install react-router-dom
 import { Route, Switch } from 'react-router-dom';
 import PublicRoute from '../route/PublicRoute';
+import PrivateRoute from '../route/PrivateRoute';
 import SignUp from '../auth/SignUp';
 import Dashboard from './Dashboard';
 import Login from '../auth/Login';
@@ -26,7 +27,7 @@ export default function App() {
                         restricted={true}
                         component={Login}
                     />
-                    <PublicRoute exact path='/' component={Dashboard} />
+                    <PrivateRoute exact path='/' component={Dashboard} />
                 </Switch>
             </div>
         </Container>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route, Redirect } from 'react-router';
+import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 //Private Routes are routes only allowed to be access if logged in
