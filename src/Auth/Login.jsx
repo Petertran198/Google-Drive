@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Form, Card, Button } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 export default function Login() {
@@ -51,8 +51,12 @@ export default function Login() {
                             Login
                         </Button>
                     </Form>
+                    <Link to='/forgot-password'>Forgot Password</Link>
                 </Card.Body>
             </Card>
+            <div className='w-100 text-center mt-2'>
+                Don't have an account? <Link to='signup'>Sign Up</Link>
+            </div>
         </>
     );
 }

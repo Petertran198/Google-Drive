@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 //While useState will triger a rerender
 import { Card, Form, Button } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 export default function SignUp(props) {
     const [errors, setErrors] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -69,7 +70,7 @@ export default function SignUp(props) {
                 </Card.Body>
             </Card>
             <div className='w-100 text-center mt-2'>
-                Already have an account? Log In
+                Already have an account? <Link to='login'>Login</Link>
             </div>
         </>
     );

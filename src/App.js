@@ -1,12 +1,13 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 // remember npm install react-router-dom
-import { Route, Switch } from 'react-router-dom';
-import PublicRoute from '../route/PublicRoute';
-import PrivateRoute from '../route/PrivateRoute';
-import SignUp from '../auth/SignUp';
-import Dashboard from './Dashboard';
-import Login from '../auth/Login';
+import { Switch } from 'react-router-dom';
+import PublicRoute from './route/PublicRoute';
+import PrivateRoute from './route/PrivateRoute';
+import SignUp from './auth/SignUp';
+import Dashboard from './components/Dashboard';
+import Login from './auth/Login';
+import ForgotPassword from './auth/ForgotPassword';
 export default function App() {
     return (
         <Container
@@ -28,6 +29,11 @@ export default function App() {
                         component={Login}
                     />
                     <PrivateRoute exact path='/' component={Dashboard} />
+                    <PublicRoute
+                        exact
+                        path='/forgot-password'
+                        component={ForgotPassword}
+                    />
                 </Switch>
             </div>
         </Container>

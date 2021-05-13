@@ -36,9 +36,16 @@ export function AuthProvider({ children }) {
     };
 
     const logOut = () => {
+        //return promise if successful will signOut so you got to async/await when used in different files
         return auth.signOut();
     };
-    const value = { currentUser, signUp, login, logOut };
+
+    const resetPassword = (email) => {
+        //return promise if successful will send reset link to email so you got to async/await when used in different files
+        return auth.sendPasswordResetEmail(email);
+    };
+
+    const value = { currentUser, signUp, login, logOut, resetPassword };
 
     // This is the function that makes it possible for value to be available to anyone inside the <AuthProvider></AuthProvider> container
     // For example if I wrap around index.js. whatever data/function is provided in 'value' will be available throughout the app
