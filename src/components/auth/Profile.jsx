@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Alert, Button } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { useHistory, Link } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 
 export default function Dashboard() {
     const { currentUser, logOut } = useAuth();
@@ -24,6 +24,14 @@ export default function Dashboard() {
                     <h2 className='text-center mb-4'>Profile</h2>
                     {errors && <Alert variant='danger'>{errors}</Alert>}
                     <strong>Email:</strong> {currentUser.email}
+                    <Button
+                        variant='primary'
+                        className='btn-block'
+                        as={Link}
+                        to='/update-profile'
+                    >
+                        Update Profile
+                    </Button>
                 </Card.Body>
             </Card>
             <div className='w-100 text-center mt-2'>

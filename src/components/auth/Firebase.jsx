@@ -14,4 +14,10 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+//Brings in the auth module
 export const auth = firebase.auth();
+
+export const getCredential = (email, password) => {
+    //To get crediental u got to get it from the firebase module not the auth module
+    return firebase.auth.EmailAuthProvider.credential(email, password);
+};

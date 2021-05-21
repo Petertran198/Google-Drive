@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 //Ref has the ability to perserve data such as useState, but it does not trigger rerender
 //While useState will triger a rerender
 import { Card, Form, Button } from 'react-bootstrap';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 export default function SignUp(props) {
     const [errors, setErrors] = useState('');

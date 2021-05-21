@@ -4,10 +4,12 @@ import { Container } from 'react-bootstrap';
 import { Switch } from 'react-router-dom';
 import PublicRoute from './route/PublicRoute';
 import PrivateRoute from './route/PrivateRoute';
-import SignUp from './auth/SignUp';
-import Dashboard from './components/Dashboard';
-import Login from './auth/Login';
-import ForgotPassword from './auth/ForgotPassword';
+import SignUp from './components/auth/SignUp';
+import Profile from './components/auth/Profile';
+import Login from './components/auth/Login';
+import ForgotPassword from './components/auth/ForgotPassword';
+import UpdateProfile from './components/auth/UpdateProfile';
+
 export default function App() {
     return (
         <Container
@@ -28,11 +30,17 @@ export default function App() {
                         restricted={true}
                         component={Login}
                     />
-                    <PrivateRoute exact path='/' component={Dashboard} />
+                    <PrivateRoute exact path='/user-profile' component={Profile} />
                     <PublicRoute
                         exact
                         path='/forgot-password'
                         component={ForgotPassword}
+                    />
+                    <PrivateRoute
+                        exact
+                        path='/update-profile'
+                        restricted={true}
+                        component={UpdateProfile}
                     />
                 </Switch>
             </div>

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 //import the authentication module from firebase to use some of its function
-import { auth } from '../auth/Firebase';
+import { auth, getCredential } from '../components/auth/Firebase';
 
 //First have to create the context
 const AuthContext = React.createContext();
@@ -45,7 +45,33 @@ export function AuthProvider({ children }) {
         return auth.sendPasswordResetEmail(email);
     };
 
-    const value = { currentUser, signUp, login, logOut, resetPassword };
+    const updateEmail = (email) => {
+        return auth.currentUser.updateEmail(email);
+    };
+
+    const updatePassword = (password) => {
+        return auth.currentUser.updatePassword(password);
+    };
+
+    const reAuthUser = (password) => {
+        // this auth import is from the auth module
+        const user = auth.currentUser;
+        //To get crediental u got to get it from the firebase module not the auth module
+        const credential = getCredential(user.email, password);
+
+        return user.reauthenticateWithCredential(credential);
+    };
+
+    const value = {
+        currentUser,
+        signUp,
+        login,
+        logOut,
+        resetPassword,
+        updateEmail,
+        updatePassword,
+        reAuthUser,
+    };
 
     // This is the function that makes it possible for value to be available to anyone inside the <AuthProvider></AuthProvider> container
     // For example if I wrap around index.js. whatever data/function is provided in 'value' will be available throughout the app
