@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, Alert, Button } from 'react-bootstrap';
 import { useHistory, Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import CenteredContainer from './CenteredContainer';
 
 export default function Dashboard() {
     const { currentUser, logOut } = useAuth();
@@ -18,7 +19,7 @@ export default function Dashboard() {
     };
 
     return (
-        <>
+        <CenteredContainer>
             <Card>
                 <Card.Body>
                     <h2 className='text-center mb-4'>Profile</h2>
@@ -39,6 +40,6 @@ export default function Dashboard() {
                     Log Out
                 </Button>
             </div>
-        </>
+        </CenteredContainer>
     );
 }

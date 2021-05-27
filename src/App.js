@@ -9,41 +9,40 @@ import Profile from './components/auth/Profile';
 import Login from './components/auth/Login';
 import ForgotPassword from './components/auth/ForgotPassword';
 import UpdateProfile from './components/auth/UpdateProfile';
-
+import Header from './components/header/Header';
 export default function App() {
     return (
-        <Container
-            className='d-flex align-items-center justify-content-center'
-            style={{ minHeight: '100vh' }}
-        >
-            <div className='w-100' style={{ maxWidth: '400px' }}>
-                <Switch>
-                    <PublicRoute
-                        exact
-                        path='/signup'
-                        restricted={true}
-                        component={SignUp}
-                    />
-                    <PublicRoute
-                        exact
-                        path='/login'
-                        restricted={true}
-                        component={Login}
-                    />
-                    <PrivateRoute exact path='/user-profile' component={Profile} />
-                    <PublicRoute
-                        exact
-                        path='/forgot-password'
-                        component={ForgotPassword}
-                    />
-                    <PrivateRoute
-                        exact
-                        path='/update-profile'
-                        restricted={true}
-                        component={UpdateProfile}
-                    />
-                </Switch>
-            </div>
-        </Container>
+        <>
+            <Header />
+            <Switch>
+                {/* Authentication */}
+                <PublicRoute
+                    exact
+                    path='/signup'
+                    restricted={true}
+                    component={SignUp}
+                />
+                <PublicRoute
+                    exact
+                    path='/login'
+                    restricted={true}
+                    component={Login}
+                />
+                <PublicRoute
+                    exact
+                    path='/forgot-password'
+                    component={ForgotPassword}
+                />
+                {/* User */}
+                <PrivateRoute exact path='/user-profile' component={Profile} />
+                <PrivateRoute
+                    exact
+                    path='/update-profile'
+                    restricted={true}
+                    component={UpdateProfile}
+                />
+                {/* Google Drive  */}
+            </Switch>
+        </>
     );
 }

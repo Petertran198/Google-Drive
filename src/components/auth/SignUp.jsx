@@ -4,6 +4,7 @@ import React, { useRef, useState } from 'react';
 import { Card, Form, Button } from 'react-bootstrap';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
+import CenteredContainer from './CenteredContainer';
 export default function SignUp(props) {
     const [errors, setErrors] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +33,7 @@ export default function SignUp(props) {
     };
 
     return (
-        <>
+        <CenteredContainer>
             {errors && <div className='alert alert-danger'>{errors}</div>}
             <Card>
                 <Card.Body>
@@ -72,6 +73,6 @@ export default function SignUp(props) {
             <div className='w-100 text-center mt-2'>
                 Already have an account? <Link to='login'>Login</Link>
             </div>
-        </>
+        </CenteredContainer>
     );
 }

@@ -6,6 +6,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { getCredential } from '../auth/Firebase';
 
 import { Link, useHistory } from 'react-router-dom';
+import CenteredContainer from './CenteredContainer';
 export default function UpdateProfile() {
     const [errors, setErrors] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -46,7 +47,7 @@ export default function UpdateProfile() {
         try {
             // Run all the promises
             await Promise.all(combinedPromises);
-            history.push('/');
+            history.push('/user-profile');
         } catch (e) {
             setErrors(e.message);
         } finally {
@@ -56,7 +57,7 @@ export default function UpdateProfile() {
     };
 
     return (
-        <>
+        <CenteredContainer>
             {errors && <div className='alert alert-danger'>{errors}</div>}
             <Card>
                 <Card.Body>
@@ -116,6 +117,6 @@ export default function UpdateProfile() {
             <div className='w-100 text-center mt-2'>
                 <Link to='/'>Cancel Update</Link>
             </div>
-        </>
+        </CenteredContainer>
     );
 }
