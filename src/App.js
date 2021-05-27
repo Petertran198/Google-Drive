@@ -10,6 +10,8 @@ import Login from './components/auth/Login';
 import ForgotPassword from './components/auth/ForgotPassword';
 import UpdateProfile from './components/auth/UpdateProfile';
 import Header from './components/header/Header';
+import Dashboard from './components/google-drive/Dashboard';
+
 export default function App() {
     return (
         <>
@@ -42,6 +44,7 @@ export default function App() {
                     component={UpdateProfile}
                 />
                 {/* Google Drive  */}
+                <PrivateRoute exact path='/' component={Dashboard} />
             </Switch>
         </>
     );

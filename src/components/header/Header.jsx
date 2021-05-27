@@ -1,13 +1,6 @@
 import { NavLink, Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import {
-    Navbar,
-    Form,
-    FormControl,
-    Button,
-    Nav,
-    NavDropdown,
-} from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
 export default function Header() {
     const { currentUser, logOut } = useAuth();

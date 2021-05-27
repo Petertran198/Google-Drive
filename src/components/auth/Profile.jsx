@@ -4,7 +4,7 @@ import { useHistory, Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import CenteredContainer from './CenteredContainer';
 
-export default function Dashboard() {
+export default function Profile() {
     const { currentUser, logOut } = useAuth();
     const [errors, setErrors] = useState();
     const history = useHistory();
