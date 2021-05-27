@@ -2,6 +2,11 @@ import { NavLink, Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
+const navLinkActive = {
+    color: '#fff',
+    fontWeight: '500',
+};
+
 export default function Header() {
     const { currentUser, logOut } = useAuth();
     const history = useHistory();
@@ -23,22 +28,34 @@ export default function Header() {
                 <Nav className='ml-auto'>
                     {currentUser ? (
                         <>
-                            <Link to='/' component={Nav.Link}>
+                            <NavLink
+                                exact
+                                to='/'
+                                component={Nav.Link}
+                                activeStyle={navLinkActive}
+                            >
                                 DashBoard
-                            </Link>
+                            </NavLink>
                             <NavDropdown
                                 title={currentUser.email}
                                 id='basic-nav-dropdown'
                             >
-                                <Link component={NavDropdown.Item} to='user-profile'>
+                                <NavLink
+                                    exact='/user-profile'
+                                    activeStyle={navLinkActive}
+                                    component={NavDropdown.Item}
+                                    to='user-profile'
+                                >
                                     Profile
-                                </Link>
-                                <Link
+                                </NavLink>
+                                <NavLink
+                                    exact='/update-profile'
+                                    activeStyle={navLinkActive}
                                     component={NavDropdown.Item}
                                     to='update-profile'
                                 >
                                     Edit Profile
-                                </Link>
+                                </NavLink>
                                 <Link
                                     component={NavDropdown.Item}
                                     onClick={handleLogOut}
@@ -49,12 +66,22 @@ export default function Header() {
                         </>
                     ) : (
                         <>
-                            <Link component={Nav.Link} to='login'>
+                            <NavLink
+                                exact='/login'
+                                component={Nav.Link}
+                                to='login'
+                                activeStyle={navLinkActive}
+                            >
                                 Login
-                            </Link>
-                            <Link component={Nav.Link} to='signup'>
+                            </NavLink>
+                            <NavLink
+                                exact='/signup'
+                                component={Nav.Link}
+                                to='signup'
+                                activeStyle={navLinkActive}
+                            >
                                 Sign Up
-                            </Link>
+                            </NavLink>
                         </>
                     )}
                 </Nav>
