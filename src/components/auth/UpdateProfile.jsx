@@ -15,7 +15,7 @@ export default function UpdateProfile() {
     // ref to update password if needed
     const newPasswordRef = useRef();
     const newPasswordConfirmRef = useRef();
-    const { updateEmail, updatePassword, currentUser, reAuthUser } = useAuth();
+    const { updateEmail, updatePassword, currentUser } = useAuth();
     const history = useHistory();
     const handleUpdate = async (e) => {
         // Reset config & Prevent refresh
