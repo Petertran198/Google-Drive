@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 //import the authentication module from firebase to use some of its function
-import { auth, getCredential } from '../components/auth/Firebase';
+import { auth, getCredential } from '../components/firebase/Firebase';
 
 //First have to create the context
 const AuthContext = React.createContext();

@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 //While useState will triger a rerender
 import { Card, Form, Button } from 'react-bootstrap';
 import { useAuth } from '../../contexts/AuthContext';
-import { getCredential } from '../auth/Firebase';
+import { getCredential } from '../firebase/Firebase';
 
 import { Link, useHistory } from 'react-router-dom';
 import CenteredContainer from './CenteredContainer';
