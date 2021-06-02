@@ -18,8 +18,8 @@ export default function Dashboard() {
                         return (
                             <div
                                 key={childFolders.id}
-                                style={{ maxWidth: '250px' }}
-                                className='p-2'
+                                className='mt-3 mr-2'
+                                style={{ maxWidth: '150px' }}
                             >
                                 <Folder folder={childFolder} />
                             </div>
