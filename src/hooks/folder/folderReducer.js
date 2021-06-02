@@ -1,3 +1,4 @@
+import { ACTIONS } from './useFolder';
 export default function folderReducer(state, action) {
     switch (action.type) {
         case ACTIONS.SELECT_FOLDER:
@@ -8,6 +9,12 @@ export default function folderReducer(state, action) {
                 childFiles: [],
                 childFolders: [],
             };
+        case ACTIONS.UPDATE_FOLDER_INFO: {
+            return {
+                ...state,
+                folder: action.payload.folder,
+            };
+        }
 
         default:
             return state;

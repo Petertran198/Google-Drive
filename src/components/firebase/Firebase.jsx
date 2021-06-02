@@ -27,5 +27,9 @@ const firestore = firebase.firestore();
 export const database = {
     folders: firestore.collection('folders'),
     files: firestore.collection('files'),
+    //custom method to format the folder obj data we create or use
+    customFormatingSnapShot: (snapShot) => {
+        return { id: snapShot.id, ...snapShot.data() };
+    },
     getCurrentTimeStamp: firebase.firestore.FieldValue.serverTimestamp, // firestore builtin method to get timestamp
 };

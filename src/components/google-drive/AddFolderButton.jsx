@@ -20,14 +20,15 @@ export default function AddFolderButton({ currentFolder }) {
         e.preventDefault();
         //Create Folder in Db
         // if we aren't in either the root folder or a another custom folder then return because u need to be in one to create one
-        if (currentFolder == null) return;
+        if (currentFolder == null) {
+            return;
+        }
 
         database.folders.add({
             name: folderNameRef.current.value,
             parentFolderId: currentFolder.id, //ParentId is the id of the parent folder need it to find path
             // path:        //path is needed to show path to get to this folder
             userId: currentUser.uid, //UserId is to associate the folder with a user so it will only show folders that belongs to the user
-
             createdAt: database.getCurrentTimeStamp(),
         });
     };
