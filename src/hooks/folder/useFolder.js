@@ -1,16 +1,19 @@
 import { useReducer, useEffect } from 'react';
 import { database } from '../../components/firebase/Firebase';
+import { useAuth } from '../../contexts/AuthContext';
 import folderReducer from './folderReducer'; // just put in new file to clean up code
 
 export const ACTIONS = {
     SELECT_FOLDER: 'select-folder',
     UPDATE_FOLDER_INFO: 'update-folder-info',
+    SET_CHILD_FOLDERS: 'set-child-folders',
 };
 
 //Use to mimic our firebase  since root folder does not exist but we need it because of the way or app works
 const ROOT_FOLDER = { name: 'ROOT', id: 'null', path: [] };
 
 export default function useFolder(folderId = null, folder = null) {
+    const { currentUser } = useAuth();
     const [state, dispatch] = useReducer(folderReducer, {
         folderId,
         folder,
@@ -48,8 +51,31 @@ export default function useFolder(folderId = null, folder = null) {
                 });
             }
         };
-
         updateFolder();
     }, [folderId]);
+
+    //Handle updating child folders
+    useEffect(() => {
+        const unsubscribe = database.folders
+            .where('parentFolderId', '==', folderId)
+            .where('userId', '==', currentUser.uid)
+            .orderBy('createdAt')
+            .onSnapshot((snapShot) => {
+                //listen and run code everytime a folder is changed or edited, snapshot contains the childFolders
+                dispatch({
+                    type: ACTIONS.SET_CHILD_FOLDERS,
+                    payload: {
+                        childFolders: snapShot.docs.map(
+                            database.customFormatingSnapShot
+                        ),
+                    },
+                });
+            });
+        return () => {
+            // Unmouting needed for onSnapShot, aka remove listener when done and stop listening
+            unsubscribe();
+        };
+    }, [folderId, currentUser]);
+
     return state;
 }

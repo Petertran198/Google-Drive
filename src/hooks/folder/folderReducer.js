@@ -15,7 +15,12 @@ export default function folderReducer(state, action) {
                 folder: action.payload.folder,
             };
         }
-
+        case ACTIONS.SET_CHILD_FOLDERS: {
+            return {
+                ...state,
+                childFolders: action.payload.childFolders,
+            };
+        }
         default:
             return state;
     }
