@@ -10,7 +10,7 @@ export const ACTIONS = {
 };
 
 //Use to mimic our firebase  since root folder does not exist but we need it because of the way or app works
-const ROOT_FOLDER = { name: 'ROOT', id: 'null', path: [] };
+export const ROOT_FOLDER = { name: 'Root', id: null, path: [] };
 
 export default function useFolder(folderId = null, folder = null) {
     const { currentUser } = useAuth();

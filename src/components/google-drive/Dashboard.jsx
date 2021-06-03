@@ -1,12 +1,13 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 import useFolder from '../../hooks/folder/useFolder';
 import AddFolderButton from './AddFolderButton';
 import Folder from './Folder';
 export default function Dashboard() {
-    const { folder, childFolders } = useFolder('MZQV8JEWUQP6ur1p2tKC');
-    console.log(childFolders);
-    console.log(folder);
+    const { folderId } = useParams();
+    const { folder, childFolders } = useFolder(folderId);
+    console.log(folderId);
     return (
         <Container>
             Dashboard <br />
@@ -17,7 +18,7 @@ export default function Dashboard() {
                     {childFolders.map((childFolder) => {
                         return (
                             <div
-                                key={childFolders.id}
+                                key={childFolder.id}
                                 className='mt-3 mr-2'
                                 style={{ maxWidth: '150px' }}
                             >

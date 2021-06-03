@@ -44,6 +44,8 @@ export default function App() {
                 />
                 {/* Google Drive  */}
                 <PrivateRoute exact path='/' component={Dashboard} />
+                {/* Dynamic routing made for different folders */}
+                <PrivateRoute exact path='/folder/:folderId' component={Dashboard} />
             </Switch>
         </>
     );

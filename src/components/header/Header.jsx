@@ -41,7 +41,7 @@ export default function Header() {
                                 id='basic-nav-dropdown'
                             >
                                 <NavLink
-                                    exact='/user-profile'
+                                    exact
                                     activeStyle={navLinkActive}
                                     component={NavDropdown.Item}
                                     to='user-profile'
@@ -49,7 +49,7 @@ export default function Header() {
                                     Profile
                                 </NavLink>
                                 <NavLink
-                                    exact='/update-profile'
+                                    exact
                                     activeStyle={navLinkActive}
                                     component={NavDropdown.Item}
                                     to='update-profile'
@@ -67,7 +67,7 @@ export default function Header() {
                     ) : (
                         <>
                             <NavLink
-                                exact='/login'
+                                exact
                                 component={Nav.Link}
                                 to='login'
                                 activeStyle={navLinkActive}
@@ -75,7 +75,7 @@ export default function Header() {
                                 Login
                             </NavLink>
                             <NavLink
-                                exact='/signup'
+                                exact
                                 component={Nav.Link}
                                 to='signup'
                                 activeStyle={navLinkActive}

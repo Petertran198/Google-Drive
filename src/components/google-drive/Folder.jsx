@@ -13,6 +13,7 @@ export default function Folder({ folder }) {
     return (
         <Button
             as={Link}
+            to={`/folder/${folder.id}`}
             variant='dark'
             className='text-light text-truncate w-100'
             style={folderBoxShadow}
