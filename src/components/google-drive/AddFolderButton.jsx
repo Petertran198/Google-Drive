@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolderPlus } from '@fortawesome/free-solid-svg-icons';
 import { database } from '../firebase/Firebase';
 import { useAuth } from '../../contexts/AuthContext';
-
+import { ROOT_FOLDER } from '../../hooks/folder/useFolder';
 export default function AddFolderButton({ currentFolder }) {
     //Modal
     const [show, setShow] = useState(false);
@@ -23,11 +23,16 @@ export default function AddFolderButton({ currentFolder }) {
         if (currentFolder == null) {
             return;
         }
-
+        // we spread all the path leading up to the folder and THEN path.push will add currentfolder path to the path array
+        const path = [...currentFolder.path];
+        if (currentFolder !== ROOT_FOLDER) {
+            // Only add to path if it isn't Root_folder since that is a made up folder
+            path.push({ id: currentFolder.id, name: currentFolder.name });
+        }
         database.folders.add({
             name: folderNameRef.current.value,
             parentFolderId: currentFolder.id, //ParentId is the id of the parent folder need it to find path
-            // path:        //path is needed to show path to get to this folder
+            path: path,
             userId: currentUser.uid, //UserId is to associate the folder with a user so it will only show folders that belongs to the user
             createdAt: database.getCurrentTimeStamp(),
         });

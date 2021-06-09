@@ -1,4 +1,5 @@
 import { ACTIONS } from './useFolder';
+
 export default function folderReducer(state, action) {
     switch (action.type) {
         case ACTIONS.SELECT_FOLDER:
