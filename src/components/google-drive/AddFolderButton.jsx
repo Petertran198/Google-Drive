@@ -16,8 +16,8 @@ export default function AddFolderButton({ currentFolder }) {
     //To get currentUser to associate with folder
     const { currentUser } = useAuth();
     const handleSubmit = (e) => {
-        closeModal();
         e.preventDefault();
+        closeModal();
         //Create Folder in Db
         // if we aren't in either the root folder or a another custom folder then return because u need to be in one to create one
         if (currentFolder == null) {
@@ -39,7 +39,7 @@ export default function AddFolderButton({ currentFolder }) {
     };
     return (
         <>
-            <Button variant='primary' onClick={openModal}>
+            <Button variant='outline-primary' onClick={openModal} className='mr-2'>
                 <FontAwesomeIcon icon={faFolderPlus} />
             </Button>
 

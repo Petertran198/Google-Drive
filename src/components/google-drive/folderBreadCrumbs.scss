@@ -1,3 +1,13 @@
 .breadcrumb-item + .breadcrumb-item::before {
     content: '>';
 } // Change seperator for breadcrumb from / to >
+
+.breadcrumb-item {
+    margin: 20px 0;
+    padding: 7px;
+    position: relative;
+    display: block;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+    box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.03);
+}

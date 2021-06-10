@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumb } from 'react-bootstrap';
 import { ROOT_FOLDER } from '../../hooks/folder/useFolder';
@@ -21,7 +21,7 @@ export default function FolderBreadCrumbs({ currentFolder }) {
     return (
         // listProps is a bootstrap method to change styling
         <Breadcrumb
-            className='flex-grow-1'
+            className='flex-grow-1 '
             listProps={{ className: 'bg-white pl-0 m-0' }}
         >
             {/* This will bring in all the links before the current folder */}
@@ -29,13 +29,13 @@ export default function FolderBreadCrumbs({ currentFolder }) {
                 return (
                     <Breadcrumb.Item
                         key={folder.id}
-                        className='text-truncate '
+                        className='text-truncate'
                         style={{ maxWidth: '150px' }}
                     >
                         <Link
                             as={Link}
                             to={folder.id ? `/folder/${folder.id}` : '/'} // only folder with no id is the root folder
-                            className='text-secondary'
+                            className='text-secondary '
                         >
                             {' '}
                             {folder.name}
