@@ -14,6 +14,7 @@ export default function folderReducer(state, action) {
             return {
                 ...state,
                 folder: action.payload.folder,
+                error: action.payload.error,
             };
         }
         case ACTIONS.SET_CHILD_FOLDERS: {

@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumb } from 'react-bootstrap';
 import { ROOT_FOLDER } from '../../hooks/folder/useFolder';
+import './folderBreadCrumbs.scss';
+
 export default function FolderBreadCrumbs({ currentFolder }) {
     let folderPathing;
 
@@ -22,12 +24,18 @@ export default function FolderBreadCrumbs({ currentFolder }) {
             className='flex-grow-1'
             listProps={{ className: 'bg-white pl-0 m-0' }}
         >
+            {/* This will bring in all the links before the current folder */}
             {folderPathing.map((folder, index) => {
                 return (
-                    <Breadcrumb.Item key={folder.id}>
+                    <Breadcrumb.Item
+                        key={folder.id}
+                        className='text-truncate '
+                        style={{ maxWidth: '150px' }}
+                    >
                         <Link
                             as={Link}
-                            to={folder.id ? `/folder/${folder.id}` : '/'}
+                            to={folder.id ? `/folder/${folder.id}` : '/'} // only folder with no id is the root folder
+                            className='text-secondary'
                         >
                             {' '}
                             {folder.name}
@@ -35,6 +43,24 @@ export default function FolderBreadCrumbs({ currentFolder }) {
                     </Breadcrumb.Item>
                 );
             })}
+            {/* This will  append the currentFolder breadcrumb link */}
+            {currentFolder && (
+                <Breadcrumb.Item
+                    key={currentFolder.id}
+                    aria-current='page'
+                    className='text-truncate'
+                    style={{ maxWidth: '150px' }}
+                >
+                    <Link
+                        as={Link}
+                        to={currentFolder.id ? `/folder/${currentFolder.id}` : '/'} // only folder with no id is the root folder
+                        className='text-dark'
+                    >
+                        {' '}
+                        {currentFolder.name}
+                    </Link>
+                </Breadcrumb.Item>
+            )}
         </Breadcrumb>
     );
 }

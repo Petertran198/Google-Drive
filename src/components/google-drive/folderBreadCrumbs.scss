@@ -1,0 +1,3 @@
+.breadcrumb-item + .breadcrumb-item::before {
+    content: '>';
+} // Change seperator for breadcrumb from / to >

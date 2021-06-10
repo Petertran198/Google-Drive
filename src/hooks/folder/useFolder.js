@@ -47,7 +47,7 @@ export default function useFolder(folderId = null, folder = null) {
             } catch (e) {
                 dispatch({
                     type: ACTIONS.UPDATE_FOLDER_INFO,
-                    payload: { folder: ROOT_FOLDER },
+                    payload: { folder: ROOT_FOLDER, error: e.message },
                 });
             }
         };
