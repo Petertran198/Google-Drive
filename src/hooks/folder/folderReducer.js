@@ -1,5 +1,6 @@
 import { ACTIONS } from './useFolder';
 
+//Each method in here update a single part of the folder object
 export default function folderReducer(state, action) {
     switch (action.type) {
         case ACTIONS.SELECT_FOLDER:
@@ -21,6 +22,12 @@ export default function folderReducer(state, action) {
             return {
                 ...state,
                 childFolders: action.payload.childFolders,
+            };
+        }
+        case ACTIONS.SET_CHILD_FILES: {
+            return {
+                ...state,
+                childFiles: action.payload.childFiles,
             };
         }
         default:

@@ -4,11 +4,12 @@ import { useParams } from 'react-router-dom';
 import useFolder from '../../hooks/folder/useFolder';
 import AddFolderButton from './AddFolderButton';
 import Folder from './Folder';
+import File from './File';
 import FolderBreadCrumbs from './FolderBreadCrumbs';
 import AddFileButton from './AddFileButton';
 export default function Dashboard() {
     const { folderId } = useParams();
-    const { folder, childFolders, error } = useFolder(folderId);
+    const { folder, childFolders, error, childFiles } = useFolder(folderId);
     if (error)
         return (
             <div
@@ -18,6 +19,7 @@ export default function Dashboard() {
                 {error}
             </div>
         );
+    console.log(childFiles, 'files');
     return (
         <Container>
             {error}
@@ -27,7 +29,10 @@ export default function Dashboard() {
                 <AddFolderButton currentFolder={folder} />
                 <AddFileButton currentFolder={folder} />
             </div>
-
+            {/*if there are folders display the label folder*/}
+            {childFolders.length > 0 && (
+                <h1 className='lead text-bolder'>Folders</h1>
+            )}{' '}
             {childFolders.length > 0 && (
                 <div className='d-flex flex-wrap'>
                     {' '}
@@ -44,6 +49,25 @@ export default function Dashboard() {
                     })}
                 </div>
             )}
+            {/*Put hr tag to seperate the files and folder if there are any folders */}
+            {childFolders.length > 0 && (
+                <>
+                    <hr />
+                    <h1 className='lead text-bolder'>Files</h1>
+                </>
+            )}{' '}
+            {childFiles.length > 0 && (
+                <div className='d-flex flex-wrap'>
+                    {' '}
+                    {childFiles.map((file) => {
+                        return (
+                            <div className='mt-3 mr-2' style={{ maxWidth: '150px' }}>
+                                <File file={file} />
+                            </div>
+                        );
+                    })}
+                </div>
+            )}{' '}
         </Container>
     );
 }

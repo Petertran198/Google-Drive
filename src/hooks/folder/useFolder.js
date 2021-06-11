@@ -7,6 +7,7 @@ export const ACTIONS = {
     SELECT_FOLDER: 'select-folder',
     UPDATE_FOLDER_INFO: 'update-folder-info',
     SET_CHILD_FOLDERS: 'set-child-folders',
+    SET_CHILD_FILES: 'set-child-files',
 };
 
 //Use to mimic our firebase  since root folder does not exist but we need it because of the way or app works
@@ -77,5 +78,21 @@ export default function useFolder(folderId = null, folder = null) {
         };
     }, [folderId, currentUser]);
 
+    // get the files belonging to each folder
+    useEffect(() => {
+        return database.files
+            .where('folderId', '==', folderId)
+            .where('userId', '==', currentUser.uid)
+            .onSnapshot((snapshot) => {
+                dispatch({
+                    type: ACTIONS.SET_CHILD_FILES,
+                    payload: {
+                        childFiles: snapshot.docs.map(
+                            database.customFormatingSnapShot
+                        ),
+                    },
+                });
+            });
+    }, [folderId, currentUser]);
     return state;
 }

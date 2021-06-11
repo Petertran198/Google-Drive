@@ -3,6 +3,8 @@ import firebase from 'firebase/app';
 //Also pull in these two services for db and auth services
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/storage'; // used to handle file storage
+
 var firebaseConfig = {
     apiKey: 'AIzaSyCEe-wdtLKsAfbE1TtRUIdX9X933hyVFLY',
     authDomain: 'fir-ex-test-e62ff.firebaseapp.com',
@@ -21,6 +23,7 @@ export const getCredential = (email, password) => {
     return firebase.auth.EmailAuthProvider.credential(email, password);
 };
 
+export const storage = firebase.storage();
 //For optimization purposes u dont want to export the whole firestore since its a big lib so u gonna export only what is needed
 // example collection row name folder
 const firestore = firebase.firestore();
