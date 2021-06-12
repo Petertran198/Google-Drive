@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 // To import font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //Import icon
 import { faFile } from '@fortawesome/free-solid-svg-icons';
-
 export default function File({ file }) {
+    const [isHovering, setIsHovering] = useState(false);
     return (
         <>
             <a
                 href={file.url}
                 target='_blank'
-                className='d-block text-truncate w-100 text-center text-light border p-1 rounded bg-dark '
+                className='d-block text-truncate w-100 text-center text-dark border p-2 rounded bg-white '
+                onMouseLeave={() =>
+                    setTimeout(function () {
+                        setIsHovering(false);
+                    }, 110)
+                }
+                onMouseEnter={() => setIsHovering(true)}
             >
                 <FontAwesomeIcon
                     icon={faFile}
                     style={{ height: '25px', width: '25px' }}
-                />{' '}
-                <br />
+                />
                 {file.name}
             </a>
+            {isHovering == true && (
+                <div className='w-100 text-center'>{file.name}</div>
+            )}
         </>
     );
 }

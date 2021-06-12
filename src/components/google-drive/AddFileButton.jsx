@@ -1,5 +1,4 @@
-import React, { useState, useRef } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import React from 'react';
 // To import font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //Import icon
