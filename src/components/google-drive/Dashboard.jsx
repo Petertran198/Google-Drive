@@ -19,7 +19,6 @@ export default function Dashboard() {
                 {error}
             </div>
         );
-    console.log(childFiles, 'files');
     return (
         <Container>
             {error}

@@ -9,6 +9,7 @@ import Login from './components/auth/Login';
 import ForgotPassword from './components/auth/ForgotPassword';
 import UpdateProfile from './components/auth/UpdateProfile';
 import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 import Dashboard from './components/google-drive/Dashboard';
 
 export default function App() {
@@ -47,6 +48,7 @@ export default function App() {
                 {/* Dynamic routing made for different folders */}
                 <PrivateRoute exact path='/folder/:folderId' component={Dashboard} />
             </Switch>
+            <Footer />
         </>
     );
 }

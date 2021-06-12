@@ -17,7 +17,6 @@ export default function FolderBreadCrumbs({ currentFolder }) {
         folderPathing = [...folderPathing, ...currentFolder.path];
     }
 
-    console.log(folderPathing);
     return (
         // listProps is a bootstrap method to change styling
         <Breadcrumb
