@@ -7,6 +7,8 @@ import Folder from './Folder';
 import File from './File';
 import FolderBreadCrumbs from './FolderBreadCrumbs';
 import AddFileButton from './AddFileButton';
+import GradientBg from '../background/GradientBg';
+
 export default function Dashboard() {
     const { folderId } = useParams();
     const { folder, childFolders, error, childFiles } = useFolder(folderId);
@@ -20,7 +22,7 @@ export default function Dashboard() {
             </div>
         );
     return (
-        <Container>
+        <Container className='h-100 w-100' style={{ height: '90vh' }}>
             {error}
             <div className='d-flex align-items-center'>
                 {/* currentFolder is the folder we currently in and will allow us to do stuff like reference it as the parent when we make a new folder/file */}
