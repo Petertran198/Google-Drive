@@ -78,7 +78,7 @@ export default function useFolder(folderId = null, folder = null) {
         };
     }, [folderId, currentUser]);
 
-    // get the files belonging to each folder
+    // retrieve the files belonging to each folder
     useEffect(() => {
         return database.files
             .where('folderId', '==', folderId)

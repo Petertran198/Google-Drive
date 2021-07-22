@@ -7,11 +7,11 @@ import Folder from './Folder';
 import File from './File';
 import FolderBreadCrumbs from './FolderBreadCrumbs';
 import AddFileButton from './AddFileButton';
-import GradientBg from '../background/GradientBg';
 
 export default function Dashboard() {
     const { folderId } = useParams();
     const { folder, childFolders, error, childFiles } = useFolder(folderId);
+
     if (error)
         return (
             <div

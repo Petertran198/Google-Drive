@@ -14,7 +14,7 @@ export default function File({ file }) {
                 onMouseLeave={() =>
                     setTimeout(function () {
                         setIsHovering(false);
-                    }, 110)
+                    }, 50)
                 }
                 onMouseEnter={() => setIsHovering(true)}
             >
@@ -25,7 +25,9 @@ export default function File({ file }) {
                 {file.name}
             </a>
             {isHovering == true && (
-                <div className='w-100 text-center'>{file.name}</div>
+                <div className='text-center bg-dark text-light w-100'>
+                    {file.name}
+                </div>
             )}
         </>
     );
